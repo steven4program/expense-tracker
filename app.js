@@ -35,6 +35,14 @@ app.get('/', (req, res) => {
   res.render('index')
 })
 
+app.get('/new', (req, res) => {
+  res.render('new')
+})
+
+app.get('/record/edit', (req, res) => {
+  res.render('edit')
+})
+
 // start and listen on the Express server
 app.listen(port, () => {
   console.log(`Express is listening on localhost:${port}`)
