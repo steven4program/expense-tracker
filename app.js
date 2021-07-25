@@ -7,7 +7,7 @@ const methodOverride = require('method-override')
 
 const Record = require('./models/Record')
 const Category = require('./models/Category')
-const showDate = require('./tools/handlebarsHelpers')
+const helpers = require('./tools/handlebarsHelpers')
 
 const app = express()
 const port = 3000
@@ -18,10 +18,7 @@ Category.find()
   .then((category) => categories.push(...category))
   .catch((error) => console.error(error))
 
-app.engine(
-  'hbs',
-  exphbs({ defaultLayout: 'main', extname: '.hbs', helpers: { showDate } })
-)
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs', helpers }))
 app.set('view engine', 'hbs')
 
 mongoose.connect('mongodb://localhost/expense-tracker', {
@@ -54,6 +51,7 @@ app.get('/', (req, res) => {
   Record.find(filter)
     .populate('category')
     .lean()
+    .sort({ date: 'desc' })
     .then((records) => {
       let totalAmount = 0
       records.forEach((record) => (totalAmount += record.amount))
@@ -86,7 +84,7 @@ app.get('/records/:id/edit', (req, res) => {
     .catch((error) => console.error(error))
 })
 
-app.post('/records/:id/edit', (req, res) => {
+app.put('/records/:id', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
     .then((record) => {
@@ -98,7 +96,7 @@ app.post('/records/:id/edit', (req, res) => {
 })
 
 // delete record
-app.post('/records/:id/delete', (req, res) => {
+app.delete('/records/:id', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
     .then((record) => record.remove())

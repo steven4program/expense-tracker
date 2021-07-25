@@ -35,7 +35,7 @@
     </div>
     <div class="col-4 col-md-3 col-lg-2 d-flex justify-content-around align-items-center">
       <a href="/records/{{this._id}}/edit" class="btn btn-info">Edit</a>
-      <form action="./records/{{this._id}}/delete" method="post">
+      <form action="./records/{{this._id}}?_method=DELETE" method="post">
         <button type="submit" class="btn btn-danger">Delete</button>
       </form>
     </div>
