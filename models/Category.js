@@ -6,9 +6,14 @@ const categorySchema = new Schema({
     require: true
   },
   icon: {
-    type: String,
-    require: true
-  }
+    type: String
+  },
+  records: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Record'
+    }
+  ]
 })
 
 module.exports = mongoose.model('Category', categorySchema)
