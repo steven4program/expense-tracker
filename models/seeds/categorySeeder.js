@@ -14,7 +14,7 @@ const categoryData = [
   ['餐飲食品', 'fa-utensils'],
   ['其他', 'fa-pen']
 ].map((category) => ({
-  title: category[0],
+  name: category[0],
   icon: category[1]
 }))
 

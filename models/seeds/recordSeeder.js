@@ -24,7 +24,7 @@ db.once('open', () => {
     .lean()
     .then((categories) => {
       categories.forEach((category) => {
-        categoryList[category.title] = category._id
+        categoryList[category.name] = category._id
       })
       return recordData.map((record) => ({
         name: record[0],
