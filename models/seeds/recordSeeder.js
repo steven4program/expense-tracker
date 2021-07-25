@@ -1,11 +1,5 @@
-const mongoose = require('mongoose')
 const Record = require('../Record')
 const Category = require('../Category')
-
-mongoose.connect('mongodb://localhost/expense-tracker', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
 
 let recordData = [
   ['家樂福採買', '2021/07/25', '家居物業', 553],
@@ -15,7 +9,7 @@ let recordData = [
   ['早餐', '2021/07/23', '餐飲食品', 79]
 ]
 
-const db = mongoose.connection
+const db = require('../../config/mongoose')
 
 db.once('open', () => {
   const categoryList = {}

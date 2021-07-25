@@ -1,11 +1,6 @@
-const mongoose = require('mongoose')
 const Category = require('../Category')
-mongoose.connect('mongodb://localhost/expense-tracker', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-})
 
-const db = mongoose.connection
+const db = require('../../config/mongoose')
 
 const categoryData = [
   ['家居物業', 'fa-home'],
@@ -23,8 +18,4 @@ db.once('open', () => {
     console.log('categorySeeder done.')
     return db.close()
   })
-})
-
-db.on('error', () => {
-  console.log('mongodb error!')
 })
