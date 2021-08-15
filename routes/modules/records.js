@@ -18,11 +18,11 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-  const { name, category, date, amount } = req.body
-  if (!name || !category || !date || !amount) {
-    return res.redirect('/new')
+  const { name, category, date, amount, merchant } = req.body
+  if (!name || !category || !date || !amount || !merchant) {
+    return res.redirect('/records/new')
   }
-  return Record.create({ name, category, date, amount })
+  return Record.create({ name, category, date, amount, merchant })
     .then(() => res.redirect('/'))
     .catch((error) => console.error(error))
 })

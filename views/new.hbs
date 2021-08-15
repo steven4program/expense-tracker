@@ -6,8 +6,8 @@
   </div>
 
   <div class="form-group row align-items-center justify-content-center mt-4">
-    <label for="name" class="col-3 col-lg-2 text-center fs-4">名稱*：</label>
-    <input type="text" name="name" id="name" placeholder="請輸入名稱⋯⋯" class="col-5 col-lg-4  form-control-lg">
+    <label for="name" class="col-3 col-lg-2 text-center fs-4">支出名稱*：</label>
+    <input type="text" name="name" id="name" placeholder="請輸入支出名稱⋯⋯" class="col-5 col-lg-4  form-control-lg">
   </div>
 
   <div class="form-group row align-items-center justify-content-center mt-4">
@@ -19,11 +19,16 @@
     <label for="category" class="col-3 col-lg-2 text-center fs-4">類別*：</label>
     <div class="form-group col-5 col-lg-4">
       <select class="form-select" name="category" id="category">
-          {{#each categories}}
-          <option value="{{this._id}}">{{this.name}}</option>
-          {{/each}}
+        {{#each categories}}
+        <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
       </select>
     </div>
+  </div>
+
+  <div class="form-group row align-items-center justify-content-center mt-4">
+    <label for="merchant" class="col-3 col-lg-2 text-center fs-4">商家名稱*：</label>
+    <input type="text" name="merchant" id="merchant" placeholder="請輸入商家名稱⋯⋯" class="col-5 col-lg-4  form-control-lg">
   </div>
 
   <div class="form-group row align-items-center justify-content-center mt-4">

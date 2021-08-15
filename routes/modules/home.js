@@ -14,7 +14,6 @@ router.get('/', (req, res) => {
     filter.category = category
   }
 
-  // asynchronous
   const categories = []
   Category.find()
     .lean()
