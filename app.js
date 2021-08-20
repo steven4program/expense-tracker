@@ -4,7 +4,6 @@ const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
 const helpers = require('./tools/handlebarsHelpers')
-const hbsHelpers = require('handlebars-helpers')(['comparison'])
 
 const routes = require('./routes')
 require('./config/mongoose')
@@ -12,10 +11,7 @@ require('./config/mongoose')
 const app = express()
 const PORT = process.env.PORT || 3000
 
-app.engine(
-  'hbs',
-  exphbs({ defaultLayout: 'main', extname: '.hbs', helpers, hbsHelpers })
-)
+app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs', helpers }))
 app.set('view engine', 'hbs')
 
 app.use(bodyParser.urlencoded({ extended: true }))

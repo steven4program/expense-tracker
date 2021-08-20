@@ -8,7 +8,8 @@ const Category = require('../../models/Category')
 
 // define home route
 router.get('/', (req, res) => {
-  const category = req.query.category
+  const { month, category } = req.query
+  console.log(req.query)
   const filter = req.query.filter ? { category: req.query.filter } : {}
   if (category) {
     filter.category = category
