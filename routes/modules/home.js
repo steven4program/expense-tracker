@@ -8,27 +8,23 @@ const Category = require('../../models/Category')
 
 // define home route
 router.get('/', (req, res) => {
-  const { month, category } = req.query
-  console.log(req.query)
-  const filter = req.query.filter ? { category: req.query.filter } : {}
-  if (category) {
-    filter.category = category
-  }
-
   const categories = []
-  Category.find()
-    .lean()
-    .then((category) => categories.push(...category))
-    .catch((error) => console.log(error))
-
-  Record.find(filter)
-    .populate('category')
-    .lean()
-    .sort({ date: 'desc' })
-    .then((records) => {
-      let totalAmount = 0
-      records.forEach((record) => (totalAmount += record.amount))
-      res.render('index', { categories, category, records, totalAmount })
+  let totalAmount = 0
+  Promise.all([
+    Record.find().lean().sort({ date: 'desc' }),
+    Category.find().lean()
+  ])
+    .then((results) => {
+      const records = results[0]
+      const categories = results[1]
+      records.forEach((record) => {
+        const category = categories.find(
+          (category) => category.nameEn === record.category
+        )
+        record.category = category.icon
+        totalAmount += record.amount
+      })
+      res.render('index', { categories, records, totalAmount })
     })
     .catch((error) => console.log(error))
 })

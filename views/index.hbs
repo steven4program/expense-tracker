@@ -1,18 +1,20 @@
 <div class="row justify-content-center">
   <div class="form-group mt-3 col-md-5" style="max-width: 300px">
-    <form action="/" method="GET" class="mt-3">
-      <select class="form-select" name="category" id="category-filter" data-value="{{category}}" onchange="submit()">
-        <option value="" selected>全部類別</option>
-        {{#each categories}}
-        <option value="{{this._id}}">{{this.name}}</option>
-        {{/each}}
+    <form action="/filter" method="GET" class="mt-3">
+      <select class="form-select" name="category" id="category-filter" onchange="submit()">
+        <option value="all" selected>全部類別</option>
+        <option value="housewares" {{#isEqual "housewares" categoryFilter}} selected {{/isEqual}}>家居物業</option>
+        <option value="transportation" {{#isEqual "transportation" categoryFilter}} selected {{/isEqual}}>交通出行</option>
+        <option value="entertainment" {{#isEqual "entertainment" categoryFilter}} selected {{/isEqual}}>休閒娛樂</option>
+        <option value="food" {{#isEqual "food" categoryFilter}} selected {{/isEqual}}>餐飲食品</option>
+        <option value="others" {{#isEqual "others" categoryFilter}} selected {{/isEqual}}>其他</option>
       </select>
     </form>
   </div>
 
   <div class="form-group mt-3 col-md-5" style="max-width: 300px">
-    <form action="/" method="GET" class="mt-3">
-      <select class="form-select" name="month" id="month-filter" data-value="{{month}}" onchange="submit()">
+    <form action="/filter" method="GET" class="mt-3">
+      <select class="form-select" name="month" id="month-filter" onchange="submit()">
         <option value="" selected>所有月份</option>
         <option value="Jan">January</option>
         <option value="Feb">February</option>
@@ -43,15 +45,17 @@
     {{#each records}}
       <div class="list-group-item row">
         <div class="d-flex justify-content-around">
-          <i class="fas {{this.category.icon}} fa-3x"></i>
+          <div class="col-1">
+            <i class="fas {{this.category}} fa-3x"></i>
+          </div>
           <div class="col-4 d-flex">
             <div class="row col-8">
               <p>{{this.name}}</pd>
               <p>{{showDate this.date}}</p>  
             </div>
-            <p class="d-flex align-items-center col-4 justify-content-center">$ {{this.amount}}</p>              
+            <p class="d-flex align-items-center justify-content-center">{{this.merchant}}</p>
           </div>
-          <p class="d-flex align-items-center">{{this.merchant}}</p>
+            <p class="d-flex align-items-center">$ {{this.amount}}</p>         
           <div class="col-3 d-flex align-items-center justify-content-around">
             <a href="/records/{{this._id}}/edit" class="btn btn-info">Edit</a>
             <form action="./records/{{this._id}}?_method=DELETE" method="post">
@@ -67,9 +71,3 @@
 <div class="row justify-content-center mt-3">
   <a href="./records/new" class="btn btn-success btn-lg col-5" style="max-width: 290px;">新增支出</a>
 </div>
-
-<script>
-  const categoryFilter = document.querySelector('#category-filter')
-  categoryFilter.value = categoryFilter.dataset.value
-  categoryFilter.addEventListener('change', () => categoryFilter.parentElement.submit())
-</script>

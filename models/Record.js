@@ -6,9 +6,13 @@ const recordSchema = new Schema({
     type: String,
     required: true
   },
+  merchant: {
+    type: String,
+    required: true
+  },
   category: {
-    type: Schema.Types.ObjectId,
-    ref: 'Category'
+    type: String,
+    required: true
   },
   date: {
     type: Date,
@@ -16,10 +20,6 @@ const recordSchema = new Schema({
   },
   amount: {
     type: Number,
-    required: true
-  },
-  merchant: {
-    type: String,
     required: true
   }
 })

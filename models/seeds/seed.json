@@ -1,0 +1,66 @@
+{
+  "recordSeeds": [
+    {
+      "name": "雜貨採買",
+      "merchant": "家樂福",
+      "category": "housewares",
+      "date": "2021-07-25",
+      "amount": 553
+    },
+    {
+      "name": "機車加油",
+      "merchant": "中油",
+      "category": "transportation",
+      "date": "2021-07-25",
+      "amount": 125
+    },
+    {
+      "name": "Netflix月費",
+      "merchant": "Netflix",
+      "category": "entertainment",
+      "date": "2021-07-24",
+      "amount": 390
+    },
+    {
+      "name": "保險費",
+      "merchant": "國泰人壽",
+      "category": "others",
+      "date": "2021-07-23",
+      "amount": 25830
+    },
+    {
+      "name": "早餐",
+      "merchant": "Q burger",
+      "category": "food",
+      "date": "2021-07-23",
+      "amount": 79
+    }
+  ],
+  "categorySeeds": [
+    {     
+      "name": "家居物業",
+      "nameEn": "housewares",
+      "icon": "fas fa-home"
+    },
+    {
+      "name": "交通出行",
+      "nameEn": "transportation",
+      "icon": "fas fa-shuttle-van"
+    },
+    {
+      "name": "休閒娛樂",
+      "nameEn": "entertainment",      
+      "icon": "fas fa-grin-beam"
+    },
+    {
+      "name": "餐飲食品",
+      "nameEn": "food",
+      "icon": "fas fa-utensils"
+    },
+    {
+      "name": "其他",
+      "nameEn": "others",
+      "icon": "fas fa-pen"
+    }
+  ]
+}
