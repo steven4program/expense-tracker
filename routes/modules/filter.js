@@ -12,14 +12,33 @@ const allCategories = [
   'food',
   'others'
 ]
+const allMonths = [
+  '01',
+  '02',
+  '03',
+  '04',
+  '05',
+  '06',
+  '07',
+  '08',
+  '09',
+  '10',
+  '11',
+  '12'
+]
 
 // define filter route
 router.get('/', (req, res) => {
   let categoryFilter = req.query.category
+  let monthFilter = req.query.month
   // let categoryFilter be all categories if choose 全部類別
   categoryFilter === 'all'
     ? (categoryFilter = allCategories)
     : (categoryFilter = req.query.category)
+
+  monthFilter === 'all'
+    ? (monthFilter = allMonths)
+    : (monthFilter = req.query.month)
   const categories = []
   let totalAmount = 0
 
@@ -28,6 +47,7 @@ router.get('/', (req, res) => {
     Category.find().lean()
   ])
     .then((results) => {
+      console.log(req.body)
       let filteredRecords = results[0]
       const categories = results[1]
       filteredRecords.forEach((record) => {

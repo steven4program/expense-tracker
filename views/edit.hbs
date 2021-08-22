@@ -6,6 +6,19 @@
   </div>
 
   <div class="form-group row align-items-center justify-content-center mt-4">
+    <label for="category" class="col-3 col-lg-2 text-center fs-4">類別*：</label>
+    <div class="form-group col-5 col-lg-4">
+      <select class="form-select" name="category" id="category" required>
+        <option value="housewares" {{#isEqual "housewares" record.category}} selected {{/isEqual}}>家居物業</option>
+        <option value="transportation" {{#isEqual "transportation" record.category}} selected {{/isEqual}}>交通出行</option>
+        <option value="entertainment" {{#isEqual "entertainment" record.category}} selected {{/isEqual}}>休閒娛樂</option>
+        <option value="food" {{#isEqual "food" record.category}} selected {{/isEqual}}>餐飲食品</option>
+        <option value="others" {{#isEqual "others" record.category}} selected {{/isEqual}}>其他</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row align-items-center justify-content-center mt-4">
     <label for="name" class="col-3 col-lg-2 text-center fs-4">名稱*：</label>
     <input type="text" name="name" id="name" placeholder="請輸入名稱⋯⋯" value="{{record.name}}" class="col-5 col-lg-4 form-control-lg" required>
   </div>
@@ -16,14 +29,9 @@
   </div>
 
   <div class="form-group row align-items-center justify-content-center mt-4">
-    <label for="category" class="col-3 col-lg-2 text-center fs-4">類別*：</label>
-    <div class="form-group col-5 col-lg-4">
-      <select class="form-select" name="category" id="category" data-value="{{record.category}}" required>
-        {{#each categories}}
-        <option value="{{this._id}}">{{this.name}}</option>
-        {{/each}}
-      </select>
-    </div>
+    <label for="merchant" class="col-3 col-lg-2 text-center fs-4">商家名稱*：</label>
+    <input type="text" name="merchant" id="merchant" placeholder="請輸入商家名稱⋯⋯" value="{{record.merchant}}"
+            class="col-5 col-lg-4  form-control-lg" required>
   </div>
 
   <div class="form-group row align-items-center justify-content-center mt-4">
@@ -40,5 +48,5 @@
   <div class="row justify-content-center mt-4">
     <button type="submit" class="btn btn-info btn-lg col-5" style="max-width: 290px;">送出</button>
   </div>
-  
+
 </form>

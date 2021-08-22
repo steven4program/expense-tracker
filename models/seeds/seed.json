@@ -5,6 +5,7 @@
       "merchant": "家樂福",
       "category": "housewares",
       "date": "2021-07-25",
+      "month": "07",
       "amount": 553
     },
     {
@@ -12,6 +13,7 @@
       "merchant": "中油",
       "category": "transportation",
       "date": "2021-07-25",
+      "month": "07",
       "amount": 125
     },
     {
@@ -19,6 +21,7 @@
       "merchant": "Netflix",
       "category": "entertainment",
       "date": "2021-07-24",
+      "month": "07",
       "amount": 390
     },
     {
@@ -26,6 +29,7 @@
       "merchant": "國泰人壽",
       "category": "others",
       "date": "2021-07-23",
+      "month": "07",
       "amount": 25830
     },
     {
@@ -33,6 +37,7 @@
       "merchant": "Q burger",
       "category": "food",
       "date": "2021-07-23",
+      "month": "07",
       "amount": 79
     }
   ],

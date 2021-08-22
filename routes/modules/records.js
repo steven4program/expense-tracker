@@ -22,7 +22,10 @@ router.post('/', (req, res) => {
   if (!name || !category || !date || !amount || !merchant) {
     return res.redirect('/records/new')
   }
-  return Record.create({ name, category, date, amount, merchant })
+  console.log(typeof date)
+  const month = date.slice(5, 7)
+  console.log(month)
+  return Record.create({ name, merchant, category, date, month, amount })
     .then(() => res.redirect('/'))
     .catch((error) => console.error(error))
 })
@@ -40,7 +43,11 @@ router.put('/:id', (req, res) => {
   const id = req.params.id
   return Record.findById(id)
     .then((record) => {
+      const date = req.body.date
+      const month = date.slice(5, 7)
       Object.assign(record, req.body)
+      record.month = month
+      console.log(record)
       return record.save()
     })
     .then(() => res.redirect('/'))

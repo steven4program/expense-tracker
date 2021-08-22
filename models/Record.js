@@ -18,6 +18,10 @@ const recordSchema = new Schema({
     type: Date,
     required: true
   },
+  month: {
+    type: String,
+    required: true
+  },
   amount: {
     type: Number,
     required: true
