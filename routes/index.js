@@ -6,15 +6,12 @@ const router = express.Router()
 const home = require('./modules/home')
 const records = require('./modules/records')
 const filter = require('./modules/filter')
+const users = require('./modules/users')
 
-// direct request that conform with string "/" to home module
+// direct request corresponding module
 router.use('/', home)
-
-// direct request that conform with string "/records" to records module
 router.use('/records', records)
-
-// direct request that conform with string "/filter" to records module
 router.use('/filter', filter)
+router.use('/users', users)
 
-// exports router
 module.exports = router

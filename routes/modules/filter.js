@@ -66,5 +66,5 @@ router.get('/', (req, res) => {
     })
     .catch((err) => console.log(err))
 })
-// exports router
+
 module.exports = router
