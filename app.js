@@ -1,5 +1,6 @@
 // require packages used in the project
 const express = require('express')
+const session = require('express-session')
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const methodOverride = require('method-override')
@@ -13,6 +14,14 @@ const PORT = process.env.PORT || 3000
 
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs', helpers }))
 app.set('view engine', 'hbs')
+
+app.use(
+  session({
+    secret: 'ThisIsMySecret',
+    resave: false,
+    saveUninitialized: true
+  })
+)
 
 app.use(bodyParser.urlencoded({ extended: true }))
 
