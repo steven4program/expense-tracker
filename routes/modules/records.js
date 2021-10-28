@@ -18,36 +18,44 @@ router.get('/new', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+  const userId = req.user._id
   const { name, category, date, amount, merchant } = req.body
   if (!name || !category || !date || !amount || !merchant) {
     return res.redirect('/records/new')
   }
-  console.log(typeof date)
   const month = date.slice(5, 7)
-  console.log(month)
-  return Record.create({ name, merchant, category, date, month, amount })
+  return Record.create({
+    name,
+    merchant,
+    category,
+    date,
+    month,
+    amount,
+    userId
+  })
     .then(() => res.redirect('/'))
     .catch((error) => console.error(error))
 })
 
 // edit record
 router.get('/:id/edit', (req, res) => {
-  const id = req.params.id
-  return Record.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  return Record.findOne({ _id, userId })
     .lean()
     .then((record) => res.render('edit', { categories, record }))
     .catch((error) => console.error(error))
 })
 
 router.put('/:id', (req, res) => {
-  const id = req.params.id
-  return Record.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  return Record.findOne({ _id, userId })
     .then((record) => {
       const date = req.body.date
       const month = date.slice(5, 7)
       Object.assign(record, req.body)
       record.month = month
-      console.log(record)
       return record.save()
     })
     .then(() => res.redirect('/'))
@@ -56,12 +64,12 @@ router.put('/:id', (req, res) => {
 
 // delete record
 router.delete('/:id', (req, res) => {
-  const id = req.params.id
-  return Record.findById(id)
+  const userId = req.user._id
+  const _id = req.params.id
+  return Record.findOne({ _id, userId })
     .then((record) => record.remove())
     .then(() => res.redirect('/'))
     .catch((error) => console.error(error))
 })
 
-// exports router
 module.exports = router

@@ -10,8 +10,10 @@ const Category = require('../../models/Category')
 router.get('/', (req, res) => {
   const categories = []
   let totalAmount = 0
+  const userId = req.user._id
+
   Promise.all([
-    Record.find().lean().sort({ date: 'desc' }),
+    Record.find({ userId }).lean().sort({ date: 'desc' }),
     Category.find().lean()
   ])
     .then((results) => {
