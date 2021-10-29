@@ -11,7 +11,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 db.once('open', () => {
   console.log('mongodb connected!')
-  const { name, email, password } = userSeeds
+  const { name, email, password } = userSeeds[0]
   bcrypt
     .genSalt(10)
     .then((salt) => bcrypt.hash(password, salt))
