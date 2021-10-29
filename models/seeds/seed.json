@@ -4,40 +4,35 @@
       "name": "雜貨採買",
       "merchant": "家樂福",
       "category": "housewares",
-      "date": "2021-07-25",
-      "month": "07",
+      "date": "2021-10-25",
       "amount": 553
     },
     {
       "name": "機車加油",
       "merchant": "中油",
       "category": "transportation",
-      "date": "2021-07-25",
-      "month": "07",
+      "date": "2021-10-25",
       "amount": 125
     },
     {
       "name": "Netflix月費",
       "merchant": "Netflix",
       "category": "entertainment",
-      "date": "2021-07-24",
-      "month": "07",
+      "date": "2021-10-24",
       "amount": 390
     },
     {
       "name": "保險費",
       "merchant": "國泰人壽",
       "category": "others",
-      "date": "2021-07-23",
-      "month": "07",
+      "date": "2021-10-23",
       "amount": 25830
     },
     {
       "name": "早餐",
       "merchant": "Q burger",
       "category": "food",
-      "date": "2021-07-23",
-      "month": "07",
+      "date": "2021-10-23",
       "amount": 79
     }
   ],
@@ -66,6 +61,13 @@
       "name": "其他",
       "nameEn": "others",
       "icon": "fas fa-pen"
+    }
+  ],
+  "userSeeds": [
+    {
+      "name": "root",
+      "email": "root@example.com",
+      "password": "12345678"
     }
   ]
 }

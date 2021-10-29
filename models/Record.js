@@ -10,20 +10,21 @@ const recordSchema = new Schema({
     type: String,
     required: true
   },
-  category: {
-    type: String,
-    required: true
-  },
   date: {
     type: Date,
     required: true
   },
-  month: {
+  category: {
     type: String,
     required: true
   },
   amount: {
     type: Number,
+    required: true
+  },
+  categoryId: {
+    type: Schema.Types.ObjectId,
+    ref: 'Category',
     required: true
   },
   userId: {

@@ -1,11 +1,18 @@
+const db = require('../../config/mongoose')
 const Category = require('../Category')
 const { categorySeeds } = require('./seed.json')
-const db = require('../../config/mongoose')
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
 
 db.once('open', () => {
-  console.log(categorySeeds)
-  Category.create(categorySeeds).then(() => {
-    console.log('categorySeeder done.')
-    return db.close()
-  })
+  Category.create(categorySeeds)
+    .then(() => {
+      console.log('categorySeeder done.')
+      process.exit()
+    })
+    .catch((error) => {
+      console.log(error)
+    })
 })

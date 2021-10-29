@@ -20,18 +20,20 @@ router.get('/new', (req, res) => {
 router.post('/', (req, res) => {
   const userId = req.user._id
   const { name, category, date, amount, merchant } = req.body
+  const selectedCategory = categories.find((item) => item.nameEn === category)
+  const categoryId = selectedCategory._id
+
   if (!name || !category || !date || !amount || !merchant) {
-    return res.redirect('/records/new')
+    return res.redirect('/new')
   }
-  const month = date.slice(5, 7)
   return Record.create({
     name,
     merchant,
     category,
     date,
-    month,
     amount,
-    userId
+    userId,
+    categoryId
   })
     .then(() => res.redirect('/'))
     .catch((error) => console.error(error))
@@ -50,12 +52,14 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   const userId = req.user._id
   const _id = req.params.id
+  const { name, category, date, amount, merchant } = req.body
+  const selectedCategory = categories.find((item) => item.nameEn === category)
+  const categoryId = selectedCategory._id
+
   return Record.findOne({ _id, userId })
     .then((record) => {
-      const date = req.body.date
-      const month = date.slice(5, 7)
       Object.assign(record, req.body)
-      record.month = month
+      record.categoryId = categoryId
       return record.save()
     })
     .then(() => res.redirect('/'))
