@@ -89,14 +89,13 @@ App is running on http://localhost:3000
 
 6. 在任一瀏覽器中輸入 http://localhost:3000 開始使用本專案
 
-## Installing - 安裝流程
-
 ## 種子資料
 
-- User
-  Name: root
-  Email: root@example.com
-  Password: 12345678
+### User
+
+- Name: root
+- Email: root@example.com
+- Password: 12345678
 
 ## Developer - 開發者
 
