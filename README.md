@@ -15,13 +15,13 @@ User can build an Expense Tracker web app.
 ## Screenshot 畫面瀏覽
 
 Login Page
-![image](https://github.com/steven4program/expense-tracker/blob/master/screenshot/login.png?raw=true)
+![image](https://github.com/steven4program/expense-tracker/blob/master/screenshot/Login.png?raw=true)
 
 Register Page
-![image](https://github.com/steven4program/expense-tracker/blob/master/screenshot/register.png?raw=true)
+![image](https://github.com/steven4program/expense-tracker/blob/master/screenshot/Register.png?raw=true)
 
 Home Page
-![image](https://github.com/steven4program/expense-tracker/blob/master/screenshot/home.png?raw=true)
+![image](https://github.com/steven4program/expense-tracker/blob/master/screenshot/Home.png?raw=true)
 
 Filter Page
 ![image](https://github.com/steven4program/expense-tracker/blob/master/screenshot/filter.png?raw=true)
